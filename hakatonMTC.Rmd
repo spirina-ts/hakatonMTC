@@ -1,0 +1,42 @@
+---
+title: "hakatonMTC"
+output: html_notebook
+---
+```{r}
+library(shiny)
+ui <- fluidPage(
+  titlePanel(title = 'Организационная структура компании'),
+  fluidRow(
+  
+    column(width = 3,
+  selectInput(
+    inputId = 'offise_place',
+    label = 'Месторасположение офиса',
+    choices = c('неизвестно', 'Филиал в Оренбургской области','Филиал в Волгоградской области', 'Центральный офис'))),
+
+  column(width = 3,
+  selectInput(
+    inputId = 'block',
+    label = 'Блок',
+    choices = c('неизвестно', 'Корпоративный блок','Розничный блок'))),
+
+  column(width = 3,
+  selectInput(
+    inputId = 'house',
+    label = 'Подразделения',
+    choices = c('неизвестно', 'онлайн-банкинг для бизнеса','транзакционные продукты','Управление по работе с филиалами ','онлайн-банкинг','Управление по работе с клиентами крупного и среднего бизнеса','Управление по работе с клиентами малого бизнеса','Управление ипотечного кредитования ','Управление инвестиционных продуктов'))),
+
+  column(width = 3,
+  selectInput(
+    inputId = 'town',
+    label = 'Город', 
+    choices = c('неизвестно', 'Москва','Оренбург','Орск','Волгоград'))),
+))
+server <- function(input, output) {
+  output$result <- renderPrint({
+    result <- 0
+})
+}
+
+shinyApp(ui = ui, server = server)
+```
